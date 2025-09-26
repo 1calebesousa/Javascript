@@ -1,19 +1,17 @@
-//Imortando o módulo http
 const http = require('http');
 
 http.get('http://jsonplaceholder.typicode.com/todos/1', (res) => {
     let data = '';
-
-    //um pedaço de dado foi recebido.
+    
+    // Recebe os dados em pedaços
     res.on('data', (chunk) => {
         data += chunk;
     });
 
-    //toda a resposta foi recebida. Mostra o resultado.
+    // Quando a resposta terminar, exibe os dados
     res.on('end', () => {
         console.log(JSON.parse(data));
     });
-
 }).on('error', (err) => {
-    console.log("Erro: " + err.message);
+    console.error('Erro: ' + err.message);
 });
