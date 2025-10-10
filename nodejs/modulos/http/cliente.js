@@ -1,17 +1,19 @@
-const http = require('http');
+//importa o módulo http
+import http from 'http';
 
-http.get('http://jsonplaceholder.typicode.com/todos/1', (res) => {
-    let data = '';
-    
-    // Recebe os dados em pedaços
-    res.on('data', (chunk) => {
-        data += chunk;
+http.get('http://jsonplaceholder.typicode.com/todos/2', (res) => {
+  let data  = '';
+
+  //um pedaço de dado foi recebido 
+  res.on('data', (chunk) => {
+    data += chunk;
     });
 
-    // Quando a resposta terminar, exibe os dados
+    //a resposta completa foi recebida
     res.on('end', () => {
         console.log(JSON.parse(data));
     });
-}).on('error', (err) => {
-    console.error('Erro: ' + err.message);
+
+}).on("error", (err) => {
+    console.log("Error: " + err.message);
 });
