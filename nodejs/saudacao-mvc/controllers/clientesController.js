@@ -1,2 +1,4 @@
 module.exports = {
-    clientes
+    clientes: (req, res) => {
+        res.sendFile('clientes.html', { root: './views' });
+    }
