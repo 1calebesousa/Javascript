@@ -1,12 +1,10 @@
 const saudacaoModel = require('../models/saudacaoModel');
+const loginModel = require('../models/loginModel');
+const { login } = require('./clientesController');
 
 module.exports = {
   index: (req, res) => {
     res.sendFile('index.html', { root: './views' });
-  },
-
-  usuarios: (req, res) => {
-    res.sendFile('usuarios.html', { root: './views' });
   },
 
   formulario: (req, res) => {
@@ -14,10 +12,16 @@ module.exports = {
   },
 
   saudacao: (req, res) => {
-    const { nome, idade, genero, mae } = req.body;
-    const mensagem = saudacaoModel.gerarMensagemPersonalizada(nome, idade, genero, mae);
+    const { nome, idade, genero } = req.body;
+    const mensagem = saudacaoModel.gerarMensagemPersonalizada(nome, idade, genero);
     res.send(`<h1>${mensagem}</h1>`);
+  },
+  usuarios: (req, res) => {
+    res.sendFile('usuarios.html', { root: './views' });
+  }, 
+  loginMensagem: (req, res) => {
+    const { email, senha } = req.body;
+    const mensagemP = loginModel.gerarMensagem(email, senha);
+    res.send(`<h1>${mensagemP}</h1>`);
   }
-
-  
 };

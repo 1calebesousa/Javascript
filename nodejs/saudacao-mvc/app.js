@@ -19,8 +19,8 @@ app.use('/users', usersRoutes);
 const produtosRoutes = require('./routes/produtos');
 app.use('/produtos', produtosRoutes);
 
-const clientesRoutes = require('./routes/clientes');
-app.use('/clientes', clientesRoutes);
+const produtosClientes = require('./routes/clientes');
+app.use('/clientes', produtosClientes);
 
 // Servidor
 app.listen(port, () => {

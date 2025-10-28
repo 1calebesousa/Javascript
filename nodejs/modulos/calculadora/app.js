@@ -1,9 +1,13 @@
- import {somar, subtrair, multiplicar, dividir} from './modulos/calculadora/operacoes.js';
- import * as  calculaIdade from '.modulos/calculadora/idade.js'
-// Exemplo de uso das funções
-console.log('Soma:',somar(2, 3));
-console.log('Subtração:', subtrair(5, 2));
-console.log('Multiplicação:', multiplicar(4, 6));
-console.log('Divisão:', dividir(10, 2));
-console.log('Ano em que a pessoa nasceu:',idade(17));
-console.log('Idade calculada:', calculaIdade(2008));
+// const calculadora = require('./calculadora');
+// const calculaIdade = require('./calcula_idade')
+
+import {soma,divisao,subtracao,multiplicacao} from './modulos/calculadora.js';
+import * as calculaIdade from './modulos/calcula_idade.js';
+
+const resultadoSoma = soma(2, 3);
+const resultadoDivisao = divisao(10, 10);
+const resultadoIdade = calculaIdade.idade("patricio",2000,2000)
+
+
+console.log("SOMA: " + resultadoSoma)
+console.log(resultadoIdade)

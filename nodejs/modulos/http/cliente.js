@@ -1,19 +1,22 @@
-//importa o módulo http
-import http from 'http';
+// Importa o módulo http nativo do Node.js
+const http = require('http');
 
-http.get('http://jsonplaceholder.typicode.com/todos/2', (res) => {
-  let data  = '';
 
-  //um pedaço de dado foi recebido 
-  res.on('data', (chunk) => {
-    data += chunk;
+// Realiza uma requisição GET para a URL especificada
+http.get('http://jsonplaceholder.typicode.com/todos/57', (res) => {
+    let data = '';
+
+    // Recebe os dados em partes (chunks) e os concatena
+    res.on('data', (chunk) => {
+        data += chunk;
     });
 
-    //a resposta completa foi recebida
+    // Quando todos os dados forem recebidos, exibe o resultado como objeto
     res.on('end', () => {
         console.log(JSON.parse(data));
     });
 
-}).on("error", (err) => {
-    console.log("Error: " + err.message);
+// Trata possíveis erros na requisição
+}).on('error', (err) => {
+    console.error("Error: " + err.message);
 });
